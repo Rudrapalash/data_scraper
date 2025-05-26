@@ -2,18 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Web Scraper</title>
+    <title>Data Scraper</title>
     <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --accent-color: #4CAF50;
+            --hover-accent: #45a049;
+            --link-color: #66b2ff;
+            --hover-link-color: #91caff;
+            --table-border: #333;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9f9f9;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             padding: 40px;
             margin: 0;
         }
 
         h2 {
             text-align: center;
-            color: #333;
+            color: var(--text-color);
         }
 
         form {
@@ -26,15 +38,17 @@
         input[type="text"] {
             width: 70%;
             padding: 12px;
-            border: 1px solid #ccc;
+            border: 1px solid #555;
             border-radius: 6px;
             margin-right: 10px;
             font-size: 16px;
+            background-color: #2c2c2c;
+            color: var(--text-color);
         }
 
         input[type="submit"] {
             padding: 12px 24px;
-            background-color: #4CAF50;
+            background-color: var(--accent-color);
             color: white;
             border: none;
             border-radius: 6px;
@@ -44,12 +58,12 @@
         }
 
         input[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: var(--hover-accent);
         }
 
         .error {
             text-align: center;
-            color: red;
+            color: #ff6b6b;
             margin-top: 20px;
         }
 
@@ -57,36 +71,52 @@
             border-collapse: collapse;
             width: 100%;
             margin-top: 30px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+            background-color: var(--card-bg);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
         }
 
         th, td {
-            border: 1px solid #ddd;
+            border: 1px solid var(--table-border);
             padding: 10px 12px;
             text-align: left;
         }
 
         th {
-            background-color: #4CAF50;
+            background-color: var(--accent-color);
             color: white;
         }
 
         tr:nth-child(even) {
-            background-color: #f2f2f2;
+            background-color: #1a1a1a;
         }
 
         tr:hover {
-            background-color: #f1f1f1;
+            background-color: #2a2a2a;
         }
 
         a {
-            color: #007BFF;
+            color: var(--link-color);
             text-decoration: none;
         }
 
         a:hover {
             text-decoration: underline;
+            color: var(--hover-link-color);
+        }
+
+        button.download-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button.download-btn:hover {
+            background-color: #1976D2;
         }
 
         @media (max-width: 768px) {
@@ -107,7 +137,7 @@
     </style>
 </head>
 <body>
-    <h2>Simple Web Scraper</h2>
+    <h2>Data Scraper</h2>
     <form method="POST">
         <input type="text" name="url" placeholder="Enter URL here..." required>
         <input type="submit" value="Scrape">
@@ -121,9 +151,7 @@
         <h3 style="text-align:center;">Scraped Data:</h3>
         <div style="text-align:center; margin-bottom: 20px;">
             <a href="/download">
-                <button style="padding: 10px 20px; font-size: 16px; background-color: #2196F3; color: white; border: none; border-radius: 6px; cursor: pointer;">
-                    Download CSV
-                </button>
+                <button class="download-btn">Download CSV</button>
             </a>
         </div>
         <table>
